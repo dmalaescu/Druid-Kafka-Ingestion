@@ -101,6 +101,11 @@ From conf-quickstart/tranquility within druid installation modify the kafka.json
    }
 ```
 
+
+
+
+
+
 Then start the tranquility server with the above configuration file.
 ```bin/tranquility kafka -configFile ../druid-0.9.1.1/conf-quickstart/tranquility/kafka.json```
 Look for the messages in the console that shows the tranquility was indeed started
