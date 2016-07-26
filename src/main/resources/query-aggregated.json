@@ -1,0 +1,14 @@
+{
+  "queryType": "groupBy",
+  "dataSource": "pageviews-kafka",
+  "dimensions": ["url", "user"],
+  "granularity": "all",
+  "aggregations": [
+    {"type": "sum", "name": "latencyMs"}
+  ],
+  "intervals": [
+    "2000-01-01/2020-01-02"
+  ],
+
+  "pagingSpec":{"pagingIdentifiers": {}, "threshold":500}
+}

@@ -12,8 +12,9 @@ import java.text.MessageFormat;
 public class KafkaProducerMain {
     public static void main(String[] args) throws IOException {
         System.out.println("Run Kafka Producer");
-
-        DruidKafkaProducer producer = new DruidKafkaProducer();
-        producer.sendMessages();
+        String record = "{\"time\": \"" + new DateTime(DateTimeZone.UTC) + "\", \"url\": \"/foo/bar\", \"user\": \"user1\", \"latencyMs\": 32}";
+        System.out.println(record);
+//        DruidKafkaProducer producer = new DruidKafkaProducer();
+//        producer.sendMessages();
     }
 }

@@ -1,0 +1,12 @@
+{
+  "queryType": "select",
+  "dataSource": "pageviews-kafka",
+  "dimensions":[],
+  "metrics":[],
+  "granularity": "all",
+  "intervals": [
+    "2000-01-01/2020-01-02"
+  ],
+
+  "pagingSpec":{"pagingIdentifiers": {}, "threshold":500}
+}
