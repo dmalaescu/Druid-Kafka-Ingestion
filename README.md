@@ -30,6 +30,7 @@ Pageview will be the name for out topic where data coming from outside will be s
 Tranquility will take our JSON messages from the Kafka topic, parse it and put it into the Druid database.
 Make sure that Tranquility is installed on configured on the mapr machine. If not please refer to [Druid Documentation](http://druid.io/docs/0.9.0/tutorials/quickstart.html) for this.
 From conf-quickstart/tranquility within druid installation modify the kafka.json file to your needs, based on the JSON message that we want to ingest
+
 ```{
      "dataSources" : {
        "pageviews-kafka" : {
