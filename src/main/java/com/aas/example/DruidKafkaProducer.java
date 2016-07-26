@@ -18,15 +18,15 @@ public class DruidKafkaProducer {
     public DruidKafkaProducer() throws IOException {
         Properties props = new Properties();
         props.load(ClassLoader.class.getResourceAsStream("/producer.properties"));
-        producer = new KafkaProducer<String, String>(props);
+        producer = new KafkaProducer<>(props);
     }
 
     public void sendMessages() {
         for (int i = 0; i < 10; i++) {
-            String record = "{\"time\": \"" + new DateTime(DateTimeZone.UTC) + "\", \"url\": \"/foo/bar\", \"user\": \"alice\", \"latencyMs\": 32}";
-            producer.send(new ProducerRecord<String, String>("pageviews", record));
+            String record = "{\"time\": \"" + new DateTime(DateTimeZone.UTC) + "\", \"url\": \"/foo/bar\", \"user\": \"mala123\", \"latencyMs\": 32}";
+            producer.send(new    ProducerRecord<String, String>("pageviews", record));
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
