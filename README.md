@@ -1,4 +1,4 @@
-## **From Kafka to Druid**
+## **From Kafka to Druid on MapR**
 
 ### Overview
 
@@ -14,7 +14,7 @@ The next step assume that druid is present on a mapr sandbox.
 On the mapr sandbox the Zookeeper port is 5181. To start Druid you must configure zookeeper port in 
 ```config/_common/common.runtime.properties``` located in the directory where Druid is installed
 Take a look on the configuration files for each of the Druid services and ensure the sandbox have enough memory to start all the services
-Go to http://maprdemo:8081/#/ , where druid is installed to see if it is started
+Go to http://maprdemo:8081/#/ to see if Druid is started.
     
 ####Kafka broker
 Start Kafka broker by executing the command: 
@@ -108,9 +108,10 @@ Then start the tranquility server with the above configuration file.
 Look for the messages in the console that shows the tranquility was indeed started
 ```[KafkaConsumer-1] INFO  c.metamx.emitter.core.LoggingEmitter - Start: started [true]```
 ####Ingest messages
-Execute _KafkaProduceMain_ class to trigger ingestion of some messages. You can execute if from a IDE or using java, after a _mvn clean install_: 
+Execute _KafkaProduceMain_ class to trigger ingestion of some messages. The first argument of the program is the number of randomly generated messages.
+You can execute if from an IDE or using java, after a _mvn clean install_: 
 ```java
-java -jar target\druid-kafka-ingestion-1.0-SNAPSHOT.jar
+java -jar target\druid-kafka-ingestion-1.0-SNAPSHOT.jar 1000
 ```
 
 That will send the messages to a Kafka topic from which tranquility will look and store them into Druid
