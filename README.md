@@ -108,7 +108,12 @@ Then start the tranquility server with the above configuration file.
 Look for the messages in the console that shows the tranquility was indeed started
 ```[KafkaConsumer-1] INFO  c.metamx.emitter.core.LoggingEmitter - Start: started [true]```
 ####Ingest messages
-Execute _KafkaProduceMain_ class to trigger ingestion of some messages. That will send the messages to a Kafka topic from which tranquility will look and store them into Druid
+Execute _KafkaProduceMain_ class to trigger ingestion of some messages. You can execute if from a IDE or using java, after a _mvn clean install_: 
+```java
+java -jar target\druid-kafka-ingestion-1.0-SNAPSHOT.jar
+```
+
+That will send the messages to a Kafka topic from which tranquility will look and store them into Druid
 ####Query
 Querying the server with the following JSON query, that selects the counts grouped by url:
 ```json
