@@ -23,7 +23,9 @@ This will start the Kafka server on port 9082. Look on the console if Kakfa was 
 Create a Kafka topic for our custom messages: 
 ```./bin/kafka-topics.sh --create --zookeeper localhost:5181 --replication-factor 1 --partitions 1 --topic pageviews```
 Pageview will be the name for out topic where data coming from outside will be stored. Data that will be send, in form of JSON, will look like this:
-     ```{"time": "2016-07-26T15:19:39.304Z", "url": "/foo/bar", "user": "user1", "latencyMs": 32}```
+```json
+{"time": "2016-07-26T15:19:39.304Z", "url": "/foo/bar", "user": "user1", "latencyMs": 32}
+```
     
     
 ####Tranquility Server
@@ -101,12 +103,38 @@ From conf-quickstart/tranquility within druid installation modify the kafka.json
    }
 ```
 
-
-
-
-
-
 Then start the tranquility server with the above configuration file.
 ```bin/tranquility kafka -configFile ../druid-0.9.1.1/conf-quickstart/tranquility/kafka.json```
 Look for the messages in the console that shows the tranquility was indeed started
 ```[KafkaConsumer-1] INFO  c.metamx.emitter.core.LoggingEmitter - Start: started [true]```
+####Ingest messages
+Execute _KafkaProduceMain_ class to trigger ingestion of some messages. That will send the messages to a Kafka topic from which tranquility will look and store them into Druid
+####Query
+Querying the server with the following JSON query, that selects the counts grouped by url:
+```json
+{
+  "queryType": "groupBy",
+  "dataSource": "pageviews-kafka",
+  "dimensions": ["url"],
+  "granularity": "all",
+  "aggregations": [
+    {"type": "sum", "name": "latencyMs"}
+  ],
+  "intervals": [
+    "2000-01-01/2020-01-02"
+  ],
+
+  "pagingSpec":{"pagingIdentifiers": {}, "threshold":500}
+}
+```
+should receive a JSON response that can look like this:
+```json
+[ {
+  "version" : "v1",
+  "timestamp" : "2000-01-01T00:00:00.000Z",
+  "event" : {
+    "latencyMs" : 142,
+    "url" : "/foo/bar"
+  }
+} ]
+```
