@@ -132,7 +132,7 @@ Querying the server with the following JSON query, that selects the counts group
   "dimensions": ["url"],
   "granularity": "all",
   "aggregations": [
-    {"type": "sum", "name": "latencyMs"}
+    {"type": "count", "name": "latencyMs"}
   ],
   "intervals": [
     "2000-01-01/2020-01-02"
@@ -147,8 +147,29 @@ should receive a JSON response that can look like this:
   "version" : "v1",
   "timestamp" : "2000-01-01T00:00:00.000Z",
   "event" : {
-    "latencyMs" : 142,
+    "latencyMs" : 333,
     "url" : "/foo/bar"
+  }
+}, {
+  "version" : "v1",
+  "timestamp" : "2000-01-01T00:00:00.000Z",
+  "event" : {
+    "latencyMs" : 188,
+    "url" : "/google"
+  }
+}, {
+  "version" : "v1",
+  "timestamp" : "2000-01-01T00:00:00.000Z",
+  "event" : {
+    "latencyMs" : 191,
+    "url" : "/wikipedia"
+  }
+}, {
+  "version" : "v1",
+  "timestamp" : "2000-01-01T00:00:00.000Z",
+  "event" : {
+    "latencyMs" : 170,
+    "url" : "/yahoo"
   }
 } ]
 ```

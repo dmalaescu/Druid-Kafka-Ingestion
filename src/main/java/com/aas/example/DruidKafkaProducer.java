@@ -52,11 +52,10 @@ public class DruidKafkaProducer {
             record.setUrl(urls.get(random.nextInt(urls.size())));
             record.setUser(users.get(random.nextInt(users.size())));
             record.setLatencyMs(random.nextInt(100));
-//            System.out.println("Sending message: " + objectMapper.writeValueAsString(record)));
-
+            System.out.println(objectMapper.writeValueAsString(record));
             // send to Kafka Produces
             producer.send(new ProducerRecord("pageviews", objectMapper.writeValueAsString(record)));
-            System.out.println(objectMapper.writeValueAsString(record));
+
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
