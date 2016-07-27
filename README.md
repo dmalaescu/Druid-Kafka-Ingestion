@@ -18,10 +18,14 @@ Go to http://maprdemo:8081/#/ to see if Druid is started.
     
 ####Kafka broker
 Start Kafka broker by executing the command: 
-```./bin/kafka-server-start.sh /config/server.properties```  
+```shell
+./bin/kafka-server-start.sh /config/server.properties
+```
 This will start the Kafka server on port 9082. Look on the console if Kakfa was started.
 Create a Kafka topic for our custom messages: 
-```./bin/kafka-topics.sh --create --zookeeper localhost:5181 --replication-factor 1 --partitions 1 --topic pageviews```
+```shell
+./bin/kafka-topics.sh --create --zookeeper localhost:5181 --replication-factor 1 --partitions 1 --topic pageviews
+```
 Pageview will be the name for out topic where data coming from outside will be stored. Data that will be send, in form of JSON, will look like this:
 ```json
 {"time": "2016-07-26T15:19:39.304Z", "url": "/foo/bar", "user": "user1", "latencyMs": 32}
@@ -104,9 +108,13 @@ From conf-quickstart/tranquility within druid installation modify the kafka.json
 ```
 
 Then start the tranquility server with the above configuration file.
-```bin/tranquility kafka -configFile ../druid-0.9.1.1/conf-quickstart/tranquility/kafka.json```
+```
+bin/tranquility kafka -configFile ../druid-0.9.1.1/conf-quickstart/tranquility/kafka.json
+```
 Look for the messages in the console that shows the tranquility was indeed started
-```[KafkaConsumer-1] INFO  c.metamx.emitter.core.LoggingEmitter - Start: started [true]```
+```
+[KafkaConsumer-1] INFO  c.metamx.emitter.core.LoggingEmitter - Start: started [true]
+```
 ####Ingest messages
 Execute _KafkaProduceMain_ class to trigger ingestion of some messages. The first argument of the program is the number of randomly generated messages.
 You can execute if from an IDE or using java, after a _mvn clean install_: 
