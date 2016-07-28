@@ -11,11 +11,11 @@ A fast way to acquire almost all the needed setup is to install a sandbox that h
 Currently Druid is not available on the mentioned sandbox, but you can refer to [Druid Documentation](http://druid.io/docs/0.9.0/tutorials/quickstart.html) for starting it.
 It would be better to configure Druid on the sandbox, because Druid needs Zookeeper service to be present for nodes synchronization.
 The next step assume that druid is present on a mapr sandbox.
-On the mapr sandbox the Zookeeper port is 5181. To start Druid you must configure zookeeper port in 
+On the mapr sandbox the Zookeeper port is 5181. To start Druid you must configure zookeeper port in :
 ```shell
 config/_common/common.runtime.properties
 ``` 
-located in the directory where Druid is installed
+located in the directory where Druid is installed.
 Take a look on the configuration files for each of the Druid services and ensure the sandbox have enough memory to start all the services
 Go to [http://maprdemo:8081/#/](http://maprdemo:8081/#/) to see if Druid is started.
     
