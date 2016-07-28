@@ -176,3 +176,7 @@ should receive a JSON response that can look like this:
   }
 } ]
 ```
+
+Viewing data with a visualization tool you can represent data like in the picture below
+
+![Pivot Druid](src/main/resources/pivot.png)
