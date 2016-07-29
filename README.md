@@ -178,6 +178,6 @@ should receive a JSON response that can look like this:
 } ]
 ```
 
-Viewing data with a visualization tool, like Pivot you can represent it like in the picture below
+Viewing data with a visualization tool, like Pivot you can represent it like in the picture below (urls accessed by user within a period of time)
 
 ![Pivot Druid](src/main/resources/pivot.png)
